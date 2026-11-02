@@ -10,13 +10,15 @@
 </style><style>
 /* v4: reduced density */
 main{max-width:1060px}.card{padding:19px}.section-head{margin-bottom:16px}.hero{min-height:300px}.hero h1{font-size:clamp(40px,5vw,64px)}.hero p{font-size:15px}.grid{gap:10px}.grid:not(.two) .card{min-height:0}.stat{font-size:clamp(29px,4vw,42px)}.notice{font-size:13px;padding:11px}.section-title{font-size:clamp(29px,3vw,39px)}.shoe-points{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}.shoe-points>div{background:#fff;border:1px solid #e0e8e5;border-radius:13px;padding:15px;display:flex;align-items:center;gap:10px;font-size:13px}.shoe-points b{color:#279e84}.viewer{height:clamp(340px,48vw,540px);background:radial-gradient(ellipse at 52% 45%,#28434a,#0d2029 75%);border-radius:22px;position:relative;overflow:hidden;touch-action:none}.viewer canvas{width:100%;height:100%;display:block;cursor:grab;touch-action:none}.viewer canvas:active{cursor:grabbing}.viewer-top,.viewer-bottom{position:absolute;left:20px;right:20px;display:flex;justify-content:space-between;align-items:center;pointer-events:none;gap:10px}.viewer-top{top:18px}.viewer-bottom{bottom:17px;color:#b8ceca;font-size:12px}.viewer-bottom button{pointer-events:auto;padding:8px 12px}.viewer-tag{color:#b5e7d8;font-size:11px;letter-spacing:.12em;font-weight:800}.canvas-wrap{height:165px}#live .grid{gap:10px}#live .card p{margin:7px 0}#analysis .footprint{display:none}@media(max-width:700px){.shoe-points{grid-template-columns:repeat(2,1fr)}.viewer{height:380px}.viewer-top,.viewer-bottom{left:12px;right:12px}.viewer-tag{font-size:9px}}
+</style><style>
+.viewer{background:radial-gradient(ellipse at 48% 40%,#ffffff 0%,#f0f1ee 63%,#e5e8e5 100%)!important;border:1px solid #e3e8e3;min-height:480px}.viewer-top .viewer-tag{color:#34464b}.viewer-bottom{color:#5a686a}.viewer-bottom .btn{background:#172b30;color:white}.view-presets{position:absolute;top:53px;right:17px;display:flex;gap:5px;z-index:2}.view-presets button{font-size:10px;letter-spacing:.09em;border:1px solid #d9e0dc;background:#ffffffd9;border-radius:7px;padding:7px 9px;color:#344b4b;cursor:pointer}.view-presets button:hover,.view-presets button.selected{background:#15363b;color:white}.viewer canvas{touch-action:none}.viewer-top{z-index:2}.viewer-bottom{z-index:2}.shoe-points>div{background:#f9faf8}@media(max-width:600px){.viewer{min-height:390px}.view-presets{top:49px;right:8px}.view-presets button{padding:6px;font-size:9px}}
 </style></head><body><header><div><div class="brand">STRIDE<span style="color:#55c7ab">.</span></div><div class="tag"><span data-i18n="FASHION × MOTION TECHNOLOGY">FASHION × MOTION TECHNOLOGY</span></div></div><nav id="nav"><button class="active" data-page="home"><span data-i18n="Home">Home</span></button><button data-page="live"><span data-i18n="Live">Live</span></button><button data-page="analysis"><span data-i18n="Insights">Insights</span></button><button data-page="history"><span data-i18n="History">History</span></button><button data-page="sneaker"><span data-i18n="Sneaker">Sneaker</span></button><button data-page="settings"><span data-i18n="Settings">Settings</span></button></nav><div class="lang-switch"><button class="selected" id="uiEN" type="button">EN</button><button id="uiKO" type="button"><span data-i18n="한국어">한국어</span></button></div></header><main>
 <section class="page active" id="home"><div class="home-dashboard"><div class="home-main"><div class="eyebrow">STRIDE / WALKING STUDIO</div><h1 data-i18n="Your walk. In focus.">Your walk. In focus.</h1><div class="home-quick"><div><span data-i18n="SESSIONS">SESSIONS</span><strong id="homeWalks">0</strong></div><div><span data-i18n="TOTAL STEPS">TOTAL STEPS</span><strong id="homeSteps">0</strong></div><div><span data-i18n="LAST CADENCE">LAST CADENCE</span><strong id="homeCadence">—</strong></div></div><div class="actions"><button class="btn primary" onclick="showPage('live')" data-i18n="Start walking →">Start walking →</button><button class="btn secondary" onclick="showPage('analysis')" data-i18n="View insights">View insights</button></div><span class="small" data-i18n="Experimental phone-based estimates · Not medical advice">Experimental phone-based estimates · Not medical advice</span></div><div class="home-visual"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="home-foot"><svg viewBox="0 0 240 320" aria-hidden="true"><path d="M116 28 C78 29 65 69 70 117 L56 163 Q43 212 59 252 Q75 288 124 293 Q172 287 183 251 Q194 210 174 157 L166 105 Q162 34 116 28Z" fill="#dce9e2" stroke="#83b5a6" stroke-width="3"/><path d="M91 53 Q116 33 143 53 M82 79 Q118 58 154 80 M73 110 Q115 94 164 110" fill="none" stroke="#79bda8" stroke-width="5" stroke-linecap="round"/><ellipse cx="119" cy="222" rx="49" ry="45" fill="#a1d9c5" opacity=".5"/><ellipse cx="116" cy="101" rx="39" ry="40" fill="#5ac7a5" opacity=".22"/></svg></div><span class="home-visual-caption">LIVE MOTION / FUTURE FOOTWEAR</span></div></div></section>
 <section class="page" id="live"><div class="section-head"><div class="eyebrow"><span data-i18n="Live session">Live session</span></div><h2 class="section-title"><span data-i18n="Walking Studio">Walking Studio</span></h2><p class="muted"><span data-i18n="Walk with your phone securely positioned to track movement.">Walk with your phone securely positioned to track movement.</span></p></div><div class="notice" id="sensorStatus" role="status">Sensor idle. Tap “Start session” on a smartphone to request access.</div><div class="actions"><button class="btn primary" id="startBtn"><span data-i18n="Start session">Start session</span></button><button class="btn" disabled="" id="stopBtn"><span data-i18n="Stop &amp; save">Stop &amp; save</span></button><button class="btn secondary" id="testVoice"><span data-i18n="Test voice">Test voice</span></button></div><div class="grid"><div class="card"><div class="small"><span data-i18n="ESTIMATED STEPS">ESTIMATED STEPS</span></div><div class="stat" id="steps">0</div></div><div class="card"><div class="small"><span data-i18n="ESTIMATED CADENCE">ESTIMATED CADENCE</span></div><div class="stat"><span id="cadence">—</span> <span class="unit"><span data-i18n="steps/min">steps/min</span></span></div></div><div class="card"><div class="small"><span data-i18n="SESSION DURATION">SESSION DURATION</span></div><div class="stat" id="duration">00:00</div></div></div><div class="posture-strip"><div class="posture-icon"><div id="phoneTiltIcon" class="phone-icon"></div></div><div class="posture-content"><span class="small" data-i18n="PHONE ORIENTATION · POSTURE PROXY">PHONE ORIENTATION · POSTURE PROXY</span><strong id="postureLabel">—</strong><span class="small" id="postureNote" data-i18n="Secure your phone at a consistent position.">Secure your phone at a consistent position.</span></div><div class="posture-angle"><strong id="postureAngle">—</strong><span class="small" data-i18n="tilt estimate">tilt estimate</span></div></div><div class="grid two" style="margin-top:16px"><div class="card"><h3><span data-i18n="Motion intensity">Motion intensity</span><span class="pill"><span data-i18n="Live sensor">Live sensor</span></span></h3><div class="canvas-wrap"><canvas id="liveChart"></canvas></div><p class="small"><span data-i18n="Relative phone movement (m/s², approximate); not foot pressure.">Relative phone movement (m/s², approximate); not foot pressure.</span></p></div><div class="card"><h3><span data-i18n="Walking goal">Walking goal</span></h3><div class="stat"><span id="goalSteps">0</span> <span class="unit">/ <span id="goalTarget">2000</span> steps</span></div><div class="progress"><div id="goalBar"></div></div><h3><span data-i18n="Coach">Coach</span></h3><p aria-live="polite" class="muted" id="coachText"><span data-i18n="Start a session to receive simple rule-based coaching.">Start a session to receive simple rule-based coaching.</span></p><p class="small"><span data-i18n="Experimental algorithm. Estimates vary with phone placement and movement.">Experimental algorithm. Estimates vary with phone placement and movement.</span></p></div></div></section>
 <section class="page" id="analysis"><div class="section-head"><div class="eyebrow"><span data-i18n="Data &amp; insights">Data &amp; insights</span></div><h2 class="section-title"><span data-i18n="Gait Analysis">Gait Analysis</span></h2><p class="muted"><span data-i18n="Your walking trends, at a glance. Experimental estimates only.">Your walking trends, at a glance. Experimental estimates only.</span></p></div><div class="grid"><div class="card"><div class="small"><span data-i18n="LATEST STEPS">LATEST STEPS</span></div><div class="stat" id="aSteps">—</div></div><div class="card"><div class="small"><span data-i18n="LATEST CADENCE">LATEST CADENCE</span></div><div class="stat" id="aCadence">—</div></div><div class="card"><div class="small"><span data-i18n="RHYTHM VARIABILITY">RHYTHM VARIABILITY</span></div><div class="stat" id="aRhythm">—</div><p class="small"><span data-i18n="Coefficient of variation of detected step intervals (lower is more regular).">Coefficient of variation of detected step intervals (lower is more regular).</span></p></div></div><div class="card posture-insight"><h3 data-i18n="Phone orientation & movement stability">Phone orientation & movement stability</h3><div class="grid two"><div><span class="small" data-i18n="LATEST PHONE TILT">LATEST PHONE TILT</span><div class="stat" id="aPosture">—</div></div><div><span class="small" data-i18n="MOVEMENT VARIATION">MOVEMENT VARIATION</span><div class="stat" id="aSway">—</div></div></div><p class="small" data-i18n="Phone orientation is not a measurement of spinal alignment or full-body walking posture.">Phone orientation is not a measurement of spinal alignment or full-body walking posture.</p></div><div class="grid two" style="margin-top:16px"><div class="card"><h3><span data-i18n="Steps per session">Steps per session</span></h3><div class="canvas-wrap"><canvas id="stepsChart"></canvas></div><p class="small"><span data-i18n="Based only on saved sessions.">Based only on saved sessions.</span></p></div></div></section>
 <section class="page" id="history"><div class="section-head"><div class="eyebrow"><span data-i18n="Your movement journal">Your movement journal</span></div><h2 class="section-title"><span data-i18n="Walking History">Walking History</span></h2><p class="muted"><span data-i18n="Your walks, saved on this device.">Your walks, saved on this device.</span></p></div><div class="grid"><div class="card"><div class="small"><span data-i18n="TOTAL WALKS">TOTAL WALKS</span></div><div class="stat" id="totalWalks">0</div></div><div class="card"><div class="small"><span data-i18n="TOTAL ESTIMATED STEPS">TOTAL ESTIMATED STEPS</span></div><div class="stat" id="totalSteps">0</div></div><div class="card"><div class="small"><span data-i18n="TOTAL DURATION">TOTAL DURATION</span></div><div class="stat" id="totalDuration">0 min</div></div></div><div class="card" style="margin-top:16px"><div class="actions"><button class="btn secondary" id="csvBtn"><span data-i18n="Export CSV">Export CSV</span></button><button class="btn" id="clearBtn"><span data-i18n="Clear history">Clear history</span></button></div><div class="list" id="sessionList"><p class="muted"><span data-i18n="No sessions yet.">No sessions yet.</span></p></div></div></section>
 <section class="page" id="sneaker"><div class="section-head"><div class="eyebrow" data-i18n="Future product vision">Future product vision</div><h2 class="section-title" data-i18n="The Smart Sneaker">The Smart Sneaker</h2><p class="muted" data-i18n="Drag to rotate the 3D concept shoe. Future hardware concept only.">Drag to rotate the 3D concept shoe. Future hardware concept only.</p></div>
-<div class="viewer"><canvas aria-label="Rotatable 3D concept sneaker" id="shoe3d"></canvas><div class="viewer-top"><span class="viewer-tag">STRIDE / RUN 01</span><span class="viewer-tag" data-i18n="CONCEPT MODEL">CONCEPT MODEL</span></div><div class="viewer-bottom"><span data-i18n="Drag to rotate · Scroll to zoom">Drag to rotate · Scroll to zoom</span><button class="btn secondary" data-i18n="Reset view" id="resetView">Reset view</button></div></div>
+<div class="viewer"><canvas aria-label="Rotatable 3D Cloudmuse-inspired original sneaker concept" id="shoe3d"></canvas><div class="view-presets" aria-label="Sneaker views"><button type="button" data-view="side">SIDE</button><button type="button" data-view="top">TOP</button><button type="button" data-view="rear">HEEL</button><button type="button" data-view="sole">SOLE</button></div><div class="viewer-top"><span class="viewer-tag">STRIDE / CLOUDMUSE STUDY</span><span class="viewer-tag" data-i18n="CONCEPT MODEL">CONCEPT MODEL</span></div><div class="viewer-bottom"><span data-i18n="Drag to rotate · Scroll to zoom">Drag to rotate · Scroll to zoom</span><button class="btn secondary" data-i18n="Reset view" id="resetView">Reset view</button></div></div>
 <div class="shoe-points"><div><b>01</b><span data-i18n="Mesh upper">Mesh upper</span></div><div><b>02</b><span data-i18n="Lace-up support">Lace-up support</span></div><div><b>03</b><span data-i18n="Cushioned sole">Cushioned sole</span></div><div><b>04</b><span data-i18n="Sensor-ready concept">Sensor-ready concept</span></div></div>
 <p class="small" data-i18n="3D visualization is conceptual. No shoe hardware or pressure sensors are connected." style="margin-top:14px">3D visualization is conceptual. No shoe hardware or pressure sensors are connected.</p></section>
 <section class="page" id="settings"><div class="section-head"><div class="eyebrow"><span data-i18n="Personalize your session">Personalize your session</span></div><h2 class="section-title"><span data-i18n="Settings">Settings</span></h2></div><div class="card" style="max-width:650px"><label class="field"><span data-i18n="Voice language">Voice language</span><select id="language"><option data-i18n="English" value="en-US">English</option><option data-i18n="한국어" value="ko-KR">한국어</option></select></label><label class="field"><span data-i18n="Voice coaching">Voice coaching</span><select id="voiceEnabled"><option data-i18n="Enabled" value="yes">Enabled</option><option data-i18n="Disabled" value="no">Disabled</option></select></label><label class="field"><span data-i18n="Session step goal">Session step goal</span><input id="goalInput" max="100000" min="100" step="100" type="number" value="2000"/></label><button class="btn primary" id="saveSettings"><span data-i18n="Save settings">Save settings</span></button><p class="small" id="settingsMsg"></p></div><div class="notice" style="margin-top:18px"><span data-i18n="STRIDE is an experimental wellness research prototype. It does not diagnose, treat, prevent, or correct medical or orthopedic conditions. Walking metrics are estimates derived from phone movement.">STRIDE is an experimental wellness research prototype. It does not diagnose, treat, prevent, or correct medical or orthopedic conditions. Walking metrics are estimates derived from phone movement.</span></div></section>
@@ -51,7 +53,7 @@ window.addEventListener('resize',()=>{drawLive();renderAnalysis()});document.add
 
 const UI_KEY='stride_ui_lang_v2';
 let uiLang='en';try{uiLang=localStorage.getItem(UI_KEY)==='ko'?'ko':'en'}catch(e){}
-const I18N={"Home": "홈", "Live": "실시간", "Insights": "분석", "History": "기록", "Sneaker": "스니커즈", "Settings": "설정", "FASHION × MOTION TECHNOLOGY": "패션 × 모션 테크놀로지", "Research prototype · Technology & Fashion": "연구 프로토타입 · 패션 × 테크놀로지", "Move better. Look forward.": "더 나은 움직임, 더 새로운 미래.", "Track your walk today. Imagine smarter sneakers tomorrow.": "오늘의 걸음을 기록하고, 미래의 스마트 스니커즈를 만나보세요.", "Start walking →": "측정 시작 →", "Explore the sneaker": "스니커즈 살펴보기", "Smartphone prototype · Not a medical device": "스마트폰 프로토타입 · 의료기기 아님", "01 / Track": "01 / 측정", "02 / Discover": "02 / 분석", "03 / Design": "03 / 디자인", "Live motion & step estimates.": "실시간 움직임과 걸음 수 추정.", "Simple trends from your walks.": "걸음 기록을 한눈에 분석.", "The next generation of footwear.": "차세대 기능성 풋웨어.", "Live session": "실시간 세션", "Walking Studio": "워킹 스튜디오", "Walk with your phone securely positioned to track movement.": "스마트폰을 안전하게 고정하고 걸어보세요.", "Start session": "측정 시작", "Stop & save": "종료 및 저장", "Test voice": "음성 테스트", "ESTIMATED STEPS": "추정 걸음 수", "ESTIMATED CADENCE": "추정 케이던스", "SESSION DURATION": "측정 시간", "steps/min": "걸음/분", "Motion intensity": "움직임 강도", "Live sensor": "실시간 센서", "Walking goal": "걸음 목표", "Coach": "코치", "Relative phone movement (m/s², approximate); not foot pressure.": "스마트폰 움직임 추정값 · 발 압력 측정 아님.", "Start a session to receive simple rule-based coaching.": "측정을 시작하면 규칙 기반 코칭이 제공됩니다.", "Experimental algorithm. Estimates vary with phone placement and movement.": "실험적 추정치로 휴대폰 위치에 따라 달라질 수 있습니다.", "Data & insights": "데이터 인사이트", "Gait Analysis": "보행 분석", "Your walking trends, at a glance. Experimental estimates only.": "걸음 데이터를 한눈에 확인하세요. 실험적 추정값입니다.", "LATEST STEPS": "최근 걸음 수", "LATEST CADENCE": "최근 케이던스", "RHYTHM VARIABILITY": "리듬 변동성", "Coefficient of variation of detected step intervals (lower is more regular).": "걸음 간격의 변동률 · 낮을수록 일정함.", "Steps per session": "세션별 걸음 수", "Based only on saved sessions.": "저장된 세션 기준.", "Future insole pressure map": "미래형 인솔 압력 지도", "Simulation": "시뮬레이션", "Left foot": "왼발", "Right foot": "오른발", "Illustrative graphics only. No pressure sensors are connected; no pressure values are measured.": "예시 이미지입니다. 압력 센서가 연결되어 있지 않습니다.", "Your movement journal": "나의 걸음 기록", "Walking History": "걸음 기록", "Your walks, saved on this device.": "이 기기에 저장된 걸음 기록.", "TOTAL WALKS": "총 세션", "TOTAL ESTIMATED STEPS": "총 추정 걸음 수", "TOTAL DURATION": "총 시간", "Export CSV": "CSV 내보내기", "Clear history": "기록 삭제", "No sessions yet.": "아직 기록이 없습니다.", "Future product vision": "미래 제품 콘셉트", "The Smart Sneaker": "스마트 스니커즈", "Performance-inspired sneaker design. Sensor hardware is a future concept.": "기능성 러닝화 디자인 · 센서 하드웨어는 향후 개발 콘셉트입니다.", "STRIDE / CONCEPT 01": "STRIDE / 콘셉트 01", "Built to move.": "움직임을 위해 설계하다.", "Performance running silhouette. Hidden sensor architecture. Everyday style.": "기능성 러닝화 실루엣, 숨겨진 센서 구조, 일상적인 스타일.", "01": "01", "02": "02", "03": "03", "04": "04", "Engineered mesh upper": "엔지니어드 메쉬 갑피", "Structured heel & lace cage": "안정적인 힐 카운터와 레이스", "Responsive sculpted midsole": "입체적인 쿠셔닝 미드솔", "Future sensor-ready insole": "향후 센서 통합형 인솔", "Future hardware concept": "향후 하드웨어 콘셉트", "Pressure insole": "압력 센서 인솔", "Motion sensor": "모션 센서", "Wireless sync": "무선 연결", "Future foot-load sensing.": "향후 발 압력 측정.", "Future shoe movement tracking.": "향후 신발 움직임 추적.", "Future shoe-to-phone connection.": "향후 신발-스마트폰 연동.", "Personalize your session": "개인 설정", "Voice language": "음성 언어", "Voice coaching": "음성 코칭", "Enabled": "사용", "Disabled": "사용 안 함", "Session step goal": "목표 걸음 수", "Save settings": "설정 저장", "STRIDE is an experimental wellness research prototype. It does not diagnose, treat, prevent, or correct medical or orthopedic conditions. Walking metrics are estimates derived from phone movement.": "STRIDE는 실험적 웰니스 연구 프로토타입입니다. 의료적 진단·치료·교정 기능이 없으며 측정값은 스마트폰 움직임에 기반한 추정치입니다.", "Concept illustration · Not manufactured": "콘셉트 일러스트 · 미제작", "STRIDE / PERFORMANCE CONCEPT": "STRIDE / 퍼포먼스 콘셉트", "DESIGN STUDY · NOT MANUFACTURED": "디자인 스터디 · 미제작", "English": "English", "한국어": "한국어"};
+const I18N={"Home": "홈", "Live": "실시간", "Insights": "분석", "History": "기록", "Sneaker": "스니커즈", "Settings": "설정", "FASHION × MOTION TECHNOLOGY": "패션 × 모션 테크놀로지", "Research prototype · Technology & Fashion": "연구 프로토타입 · 패션 × 테크놀로지", "Move better. Look forward.": "더 나은 움직임, 더 새로운 미래.", "Track your walk today. Imagine smarter sneakers tomorrow.": "오늘의 걸음을 기록하고, 미래의 스마트 스니커즈를 만나보세요.", "Start walking →": "측정 시작 →", "Explore the sneaker": "스니커즈 살펴보기", "Smartphone prototype · Not a medical device": "스마트폰 프로토타입 · 의료기기 아님", "01 / Track": "01 / 측정", "02 / Discover": "02 / 분석", "03 / Design": "03 / 디자인", "Live motion & step estimates.": "실시간 움직임과 걸음 수 추정.", "Simple trends from your walks.": "걸음 기록을 한눈에 분석.", "The next generation of footwear.": "차세대 기능성 풋웨어.", "Live session": "실시간 세션", "Walking Studio": "워킹 스튜디오", "Walk with your phone securely positioned to track movement.": "스마트폰을 안전하게 고정하고 걸어보세요.", "Start session": "측정 시작", "Stop & save": "종료 및 저장", "Test voice": "음성 테스트", "ESTIMATED STEPS": "추정 걸음 수", "ESTIMATED CADENCE": "추정 케이던스", "SESSION DURATION": "측정 시간", "steps/min": "걸음/분", "Motion intensity": "움직임 강도", "Live sensor": "실시간 센서", "Walking goal": "걸음 목표", "Coach": "코치", "Relative phone movement (m/s², approximate); not foot pressure.": "스마트폰 움직임 추정값 · 발 압력 측정 아님.", "Start a session to receive simple rule-based coaching.": "측정을 시작하면 규칙 기반 코칭이 제공됩니다.", "Experimental algorithm. Estimates vary with phone placement and movement.": "실험적 추정치로 휴대폰 위치에 따라 달라질 수 있습니다.", "Data & insights": "데이터 인사이트", "Gait Analysis": "보행 분석", "Your walking trends, at a glance. Experimental estimates only.": "걸음 데이터를 한눈에 확인하세요. 실험적 추정값입니다.", "LATEST STEPS": "최근 걸음 수", "LATEST CADENCE": "최근 케이던스", "RHYTHM VARIABILITY": "리듬 변동성", "Coefficient of variation of detected step intervals (lower is more regular).": "걸음 간격의 변동률 · 낮을수록 일정함.", "Steps per session": "세션별 걸음 수", "Based only on saved sessions.": "저장된 세션 기준.", "Future insole pressure map": "미래형 인솔 압력 지도", "Simulation": "시뮬레이션", "Left foot": "왼발", "Right foot": "오른발", "Illustrative graphics only. No pressure sensors are connected; no pressure values are measured.": "예시 이미지입니다. 압력 센서가 연결되어 있지 않습니다.", "Your movement journal": "나의 걸음 기록", "Walking History": "걸음 기록", "Your walks, saved on this device.": "이 기기에 저장된 걸음 기록.", "TOTAL WALKS": "총 세션", "TOTAL ESTIMATED STEPS": "총 추정 걸음 수", "TOTAL DURATION": "총 시간", "Export CSV": "CSV 내보내기", "Clear history": "기록 삭제", "No sessions yet.": "아직 기록이 없습니다.", "Future product vision": "미래 제품 콘셉트", "The Smart Sneaker": "스마트 스니커즈", "Technical footwear concept based on the supplied flat sketch. Sensor integration remains future work.": "기능성 러닝화 디자인 · 센서 하드웨어는 향후 개발 콘셉트입니다.", "STRIDE / CONCEPT 01": "STRIDE / 콘셉트 01", "Built to move.": "움직임을 위해 설계하다.", "Technical mesh upper · sculpted cushioning · everyday performance.": "기능성 러닝화 실루엣, 숨겨진 센서 구조, 일상적인 스타일.", "01": "01", "02": "02", "03": "03", "04": "04", "Engineered mesh upper": "엔지니어드 메쉬 갑피", "Structured heel & lace cage": "안정적인 힐 카운터와 레이스", "Responsive sculpted midsole": "입체적인 쿠셔닝 미드솔", "Future sensor-ready insole": "향후 센서 통합형 인솔", "Future hardware concept": "향후 하드웨어 콘셉트", "Pressure insole": "압력 센서 인솔", "Motion sensor": "모션 센서", "Wireless sync": "무선 연결", "Future foot-load sensing.": "향후 발 압력 측정.", "Future shoe movement tracking.": "향후 신발 움직임 추적.", "Future shoe-to-phone connection.": "향후 신발-스마트폰 연동.", "Personalize your session": "개인 설정", "Voice language": "음성 언어", "Voice coaching": "음성 코칭", "Enabled": "사용", "Disabled": "사용 안 함", "Session step goal": "목표 걸음 수", "Save settings": "설정 저장", "STRIDE is an experimental wellness research prototype. It does not diagnose, treat, prevent, or correct medical or orthopedic conditions. Walking metrics are estimates derived from phone movement.": "STRIDE는 실험적 웰니스 연구 프로토타입입니다. 의료적 진단·치료·교정 기능이 없으며 측정값은 스마트폰 움직임에 기반한 추정치입니다.", "Concept illustration · Not manufactured": "콘셉트 일러스트 · 미제작", "STRIDE / PERFORMANCE CONCEPT": "STRIDE / 퍼포먼스 콘셉트", "DESIGN STUDY · NOT MANUFACTURED": "디자인 스터디 · 미제작", "English": "English", "한국어": "한국어"};
 const DYNAMIC_KO={
 'Sensor idle. Tap “Start session” on a smartphone to request access.':'센서 대기 중 · 스마트폰에서 측정 시작을 누르세요.',
 'No sessions yet. Start a walk to create your first record.':'아직 기록이 없습니다. 첫 걸음을 측정해 보세요.',
@@ -95,101 +97,85 @@ const previousSpeak=speak;speak=function(en,ko){if(settings.voiceEnabled!=='yes'
 Object.assign(I18N,{'Your walk. In focus.':'내 걸음을 한눈에.','SESSIONS':'측정 횟수','TOTAL STEPS':'총 걸음 수','LAST CADENCE':'최근 케이던스','View insights':'분석 보기','Experimental phone-based estimates · Not medical advice':'스마트폰 기반 실험적 추정값 · 의료용 아님','PHONE ORIENTATION · POSTURE PROXY':'스마트폰 방향 · 자세 참고 지표','Secure your phone at a consistent position.':'스마트폰을 일정한 위치에 고정하세요.','tilt estimate':'기울기 추정','Phone orientation & movement stability':'스마트폰 방향과 움직임 안정성','LATEST PHONE TILT':'최근 기기 기울기','MOVEMENT VARIATION':'움직임 변동','Phone orientation is not a measurement of spinal alignment or full-body walking posture.':'스마트폰 방향은 척추 정렬이나 전신 보행 자세를 측정하지 않습니다.'});
 renderHistory();renderAnalysis();
 
-// STRIDE v4 procedural 3D concept viewer: canvas-only, no CDN or WebGL dependency.
-(function(){
-const extra={
-'Drag to rotate the 3D concept shoe. Future hardware concept only.':'3D 콘셉트 신발을 드래그해 회전해 보세요. 하드웨어는 향후 개발 계획입니다.',
-'CONCEPT MODEL':'콘셉트 모델','Drag to rotate · Scroll to zoom':'드래그 회전 · 스크롤 확대','Reset view':'시점 초기화',
-'Mesh upper':'메쉬 갑피','Lace-up support':'레이스업 서포트','Cushioned sole':'쿠셔닝 솔','Sensor-ready concept':'센서 통합 콘셉트',
-'3D visualization is conceptual. No shoe hardware or pressure sensors are connected.':'3D 이미지는 콘셉트입니다. 실제 신발 하드웨어나 압력 센서는 연결되지 않았습니다.'};
-Object.assign(I18N,extra);
-const canvas=document.getElementById('shoe3d');if(!canvas)return;
-const ctx=canvas.getContext('2d');let yaw=-.63,pitch=.23,zoom=1,drag=false,px=0,py=0;
-// coordinate convention: toe is x=+; heel x=-; y vertical; z width
-const parts=[];
-function add(poly,color,stroke){parts.push({poly,color,stroke});}
-function loft(xs,levels,colors){
- // levels: [y, width multiplier, top?] use each x station with asymmetric side widths
- for(let k=0;k<levels.length-1;k++){
-  for(let i=0;i<xs.length-1;i++){
-   const a=xs[i],b=xs[i+1],l=levels[k],m=levels[k+1];
-   for(let side of [-1,1]){
-    const p=[[a.x,l.y,a.w*l.w*side],[b.x,l.y,b.w*l.w*side],[b.x,m.y,b.w*m.w*side],[a.x,m.y,a.w*m.w*side]];
-    add(p,colors[k] || '#d5e2de');
-   }
-  }
- }
+// 3D viewer is initialized by the dedicated Three.js module below.
+</script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.1/examples/jsm/"}}</script><script type="module">
+import * as THREE from 'three';
+import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
+const canvas=document.getElementById('shoe3d');
+const viewer=canvas?.closest('.viewer');
+if(canvas && viewer){
+try {
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.45;
+const scene=new THREE.Scene();const camera=new THREE.PerspectiveCamera(35,1,.1,100);camera.position.set(6.5,3.1,8.5);
+const controls=new OrbitControls(camera,canvas);controls.enableDamping=true;controls.dampingFactor=.075;controls.enablePan=false;controls.minDistance=5.7;controls.maxDistance=16;controls.target.set(0,.25,0);controls.minPolarAngle=.05;controls.maxPolarAngle=Math.PI-.05;
+scene.add(new THREE.HemisphereLight(0xffffff,0xc7c8bf,2.4));
+function light(x,y,z,power,size){const l=new THREE.DirectionalLight(0xffffff,power);l.position.set(x,y,z);scene.add(l)}light(-4,8,7,3);light(5,5,-6,2);
+const shoe=new THREE.Group();scene.add(shoe);
+const mat=(color,roughness=.82,metalness=0)=>new THREE.MeshStandardMaterial({color,roughness,metalness,side:THREE.DoubleSide});
+const ivory=mat('#f1ecdf'),meshBase=mat('#eee9dc'),cream=mat('#f7f4eb'),stitched=mat('#d8d0bf'),foam=mat('#faf8f2'),foamShade=mat('#e3ded2'),gum=mat('#b97632'),gumDark=mat('#a86626'),dark=mat('#5b554c'),liner=mat('#a3b5a9'),windowMat=mat('#c3bdb1',.6);
+const meshCanvas=document.createElement('canvas');meshCanvas.width=256;meshCanvas.height=256;const c=meshCanvas.getContext('2d');c.fillStyle='#eee8db';c.fillRect(0,0,256,256);c.strokeStyle='#d3cbb9';c.lineWidth=2;for(let i=-256;i<512;i+=13){c.beginPath();c.moveTo(i,0);c.lineTo(i+256,256);c.stroke();c.beginPath();c.moveTo(i,256);c.lineTo(i+256,0);c.stroke()}c.strokeStyle='#fffdf5';c.lineWidth=1;for(let i=0;i<256;i+=12){c.beginPath();c.moveTo(i,0);c.lineTo(i,256);c.stroke()}
+const tex=new THREE.CanvasTexture(meshCanvas);tex.wrapS=tex.wrapT=THREE.RepeatWrapping;tex.repeat.set(2.8,1.6);tex.colorSpace=THREE.SRGBColorSpace;const meshMat=new THREE.MeshStandardMaterial({map:tex,roughness:1,side:THREE.DoubleSide});
+const xs=[-2.6,-2.43,-2.12,-1.72,-1.25,-.7,-.15,.45,1.04,1.62,2.12,2.45,2.58];
+const ws=[.40,.65,.78,.82,.84,.83,.82,.83,.82,.74,.61,.37,.07];
+const ht=[.77,.98,1.01,.86,.68,.60,.57,.49,.41,.34,.27,.19,.13];
+const interpol=(x,arr)=>{if(x<=xs[0])return arr[0];for(let i=0;i<xs.length-1;i++){if(x<=xs[i+1]){const t=(x-xs[i])/(xs[i+1]-xs[i]);return arr[i]*(1-t)+arr[i+1]*t}}return arr.at(-1)};
+function ringMesh(levels,material){const verts=[],uv=[],idx=[];const N=24;for(let i=0;i<xs.length;i++){for(let j=0;j<N;j++){let a=j/N*Math.PI*2;const z=ws[i]*levels[i][1]*Math.cos(a),y=levels[i][0]+levels[i][2]*Math.sin(a);verts.push(xs[i],y,z);uv.push(i/(xs.length-1),j/N)}}for(let i=0;i<xs.length-1;i++)for(let j=0;j<N;j++){const a=i*N+j,b=(i+1)*N+j,d=i*N+(j+1)%N,e=(i+1)*N+(j+1)%N;idx.push(a,b,d,b,e,d)}const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(verts,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));g.setIndex(idx);g.computeVertexNormals();const m=new THREE.Mesh(g,material);shoe.add(m);return m}
+// Sole: sculpted foam volume and gum bottom, fully modeled for 360-degree viewing.
+ringMesh(xs.map((x,i)=>[-.30,1.00,.14]),gum);
+ringMesh(xs.map((x,i)=>[-.13,1.05,.19]),foamShade);
+ringMesh(xs.map((x,i)=>[.08,1.05,.20]),foam);
+ringMesh(xs.map((x,i)=>[.20,1.00,.085]),foamShade);
+// Upper: rounded forefoot, closed heel, raised collar.
+ringMesh(xs.map((x,i)=>[.28,.94,ht[i]-.16]),meshMat);
+function tube(points,r,material,seg=32){const curve=new THREE.CatmullRomCurve3(points.map(p=>new THREE.Vector3(...p)));const o=new THREE.Mesh(new THREE.TubeGeometry(curve,seg,r,7,false),material);shoe.add(o);return o}
+function patch(coords,material,depth=.012){const sh=new THREE.Shape();coords.forEach(([x,y],i)=>i?sh.lineTo(x,y):sh.moveTo(x,y));sh.closePath();const geo=new THREE.ShapeGeometry(sh,30);for(const side of [-1,1]){const m=new THREE.Mesh(geo,material);m.rotation.y=side===1?0:Math.PI;m.position.z=side*(.77+depth);if(side===-1)m.position.x=0;shoe.add(m)}}
+// Curved stitched side panel with mesh center; follows lateral and medial profile.
+for(const side of [-1,1]){
+const z=side*.785;
+const poly=[[-1.93,.43],[-1.30,.45],[-.72,.47],[-.22,.50],[.33,.43],[.92,.31],[1.16,.27],[.38,.27],[-.28,.31],[-.88,.32],[-1.50,.34]];
+const curve=new THREE.CatmullRomCurve3(poly.map(p=>new THREE.Vector3(p[0],p[1],z)));tube(curve.getPoints(45).map(v=>v.toArray()),.028,ivory,60);
+// stitched parallel seam
+const seam=poly.slice(0,7).map(([x,y])=>[x,y+.035,z+side*.012]);tube(seam,.007,stitched);
+// heel counter panels
+patchSide([[-2.49,.37],[-2.37,.72],[-2.05,.78],[-1.75,.64],[-1.68,.35]],side,ivory);
+// toe cap and eyestay line
+patchSide([[1.52,.25],[1.91,.28],[2.28,.24],[2.48,.18],[2.15,.34],[1.76,.39]],side,ivory);
 }
-const xs=[{x:-2.45,w:.55},{x:-2.2,w:.85},{x:-1.6,w:1},{x:-.8,w:1.08},{x:0,w:1.03},{x:.8,w:1.05},{x:1.55,w:.92},{x:2.15,w:.68},{x:2.55,w:.18}];
-// outsole / cushioning bands
-loft(xs,[{y:-.76,w:.90},{y:-.60,w:1.04},{y:-.26,w:1.03},{y:-.15,w:.96}],['#b47b3d','#f7f7f1','#e0e3dc']);
-// main upper mesh and collar profile, thick closed heel
-const upperBottom=xs.map(p=>[p.x,-.15,p.w*.95]);
-const topY=[.52,.83,.77,.65,.48,.30,.12,-.02,-.12];
-for(let i=0;i<xs.length-1;i++){
- for(let side of [-1,1]){
-  const a=xs[i],b=xs[i+1];
-  add([[a.x,-.15,side*a.w*.95],[b.x,-.15,side*b.w*.95],[b.x,topY[i+1],side*b.w*.73],[a.x,topY[i],side*a.w*.73]],i%2?'#e3e2d7':'#eeeae0','#9eaaa9');
- }
- // top curved bridge
- add([[xs[i].x,topY[i],-xs[i].w*.73],[xs[i+1].x,topY[i+1],-xs[i+1].w*.73],[xs[i+1].x,topY[i+1],xs[i+1].w*.73],[xs[i].x,topY[i],xs[i].w*.73]],'#d7d5c9');
+function patchSide(points,side,material){const g=new THREE.BufferGeometry();const vertices=[];for(let i=1;i<points.length-1;i++){for(const k of [0,i,i+1]){const [x,y]=points[k];vertices.push(x,y,side*(interpol(x,ws)*.94+.025))}}g.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));g.computeVertexNormals();shoe.add(new THREE.Mesh(g,material));}
+// Tongue: padded, tapered, under criss-cross laces.
+const tongue=new THREE.Mesh(new THREE.BoxGeometry(2.15,.09,.56),cream);tongue.position.set(.12,.79,0);tongue.rotation.z=-.11;shoe.add(tongue);
+// Lacing system: separate eyelets and curved crossing rope.
+const lace=mat('#f9f7f0',.93),eyelet=mat('#c8c4b8',.42,.16);
+for(let i=0;i<7;i++){
+const x=-.77+i*.28;const y=.88-i*.047;
+for(const side of [-1,1]){const eye=new THREE.Mesh(new THREE.TorusGeometry(.047,.014,7,14),eyelet);eye.rotation.x=Math.PI/2;eye.position.set(x,y,side*.31);shoe.add(eye)}
+if(i<6){tube([[x,y,.31],[x+.08,y+.065,.10],[x+.20,y+.035,-.11],[x+.28,y-.047,-.31]],.025,lace,20);tube([[x,y,-.31],[x+.08,y+.065,-.1],[x+.20,y+.035,.11],[x+.28,y-.047,.31]],.024,lace,20)}
 }
-// heel cap both sides
-for(let side of [-1,1]){
- add([[-2.48,-.15,side*.46],[-1.58,-.15,side*.94],[-1.6,.67,side*.75],[-2.35,.63,side*.5]],'#b1a897','#827e73');
- // quarter cage panels
- add([[-1.4,-.08,side*.97],[-.30,-.08,side*1.03],[.15,.34,side*.83],[-.75,.60,side*.80]],'#c4c8b8','#9da99e');
- // front reinforcement
- add([[1.55,-.14,side*.86],[2.47,-.14,side*.20],[2.15,.08,side*.47],[1.6,.15,side*.73]],'#e6e0d2');
- // heel strip
- add([[-2.45,-.14,side*.42],[-2.20,-.14,side*.69],[-2.20,.68,side*.64],[-2.45,.52,side*.42]],'#a39a8b');
+// Collar rim and inset foot opening.
+const collarPts=[];for(let i=0;i<=40;i++){const a=i/40*Math.PI*2;collarPts.push([-1.88+.62*Math.cos(a),.91+.065*Math.sin(a),.48*Math.sin(a)])}tube(collarPts,.065,cream,60);
+const sock=new THREE.Mesh(new THREE.SphereGeometry(1,24,12),liner);sock.scale.set(.58,.04,.43);sock.position.set(-1.89,.87,0);shoe.add(sock);
+// Heel pull loop.
+tube([[-2.40,.93,0],[-2.47,1.22,0],[-2.37,1.31,0],[-2.30,1.00,0]],.045,cream);
+// Mesh panel edges and outsole side cushioning windows.
+for(const side of [-1,1]){
+for(const x of [-1.82,-1.18,.16,.87]){const window=new THREE.Mesh(new THREE.SphereGeometry(1,18,12),windowMat);window.scale.set(.19,.065,.035);window.position.set(x,-.115,side*(interpol(x,ws)*1.04+.035));window.rotation.z=x>0?-.18:.18;shoe.add(window)}
+// heel side emboss line
+ tube([[-2.42,.56,side*.59],[-2.12,.59,side*.79],[-1.84,.52,side*.79]],.017,stitched);
 }
-// collar hole (dark top), tongue and lace panel
-add([[-2.10,.81,-.46],[-1.47,.81,-.64],[-1.06,.61,-.50],[-1.55,.63,.48],[-2.05,.80,.44]],'#687e75');
-add([[-1.36,.63,-.39],[.47,.38,-.37],[.65,.33,.37],[-1.36,.63,.39]],'#ece9df');
-// laces in white, across top surface
-for(let i=0;i<6;i++){
- const x=-1.17+i*.28,y=.63-i*.043;
- add([[x,y,-.32],[x+.12,y-.02,-.32],[x+.20,y-.03,.32],[x+.08,y,.32]],'#f5f5e9');
+// Sculpted rubber tread blocks on bottom.
+for(let x=-2.35;x<2.38;x+=.26){for(let side of [-1,1]){const w=interpol(x,ws);const block=new THREE.Mesh(new THREE.BoxGeometry(.17,.045,Math.max(.13,w*.45)),gumDark);block.position.set(x,-.48,side*w*.45);block.rotation.y=(x>1?.16:-.12)*side;shoe.add(block)}}
+// Thin midsole seam around entire shoe.
+for(const side of [-1,1])tube(xs.map((x,i)=>[x,.15,side*ws[i]*1.03]),.014,stitched,60);
+// Subtle ground shadow.
+const shadow=new THREE.Mesh(new THREE.CircleGeometry(3.15,64),new THREE.MeshBasicMaterial({color:0x81918b,transparent:true,opacity:.12,depthWrite:false}));shadow.rotation.x=-Math.PI/2;shadow.scale.set(1.08,.40,1);shadow.position.y=-.62;scene.add(shadow);
+function setView(view){const positions={side:[0.8,1.6,10],top:[.2,10,.2],rear:[-10,1.8,.15],sole:[.15,-10,.15]};const p=positions[view];if(!p)return;camera.position.set(...p);controls.target.set(0,.25,0);controls.update();document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('selected',b.dataset.view===view));}
+document.querySelectorAll('[data-view]').forEach(b=>b.addEventListener('click',()=>setView(b.dataset.view)));
+document.getElementById('resetView')?.addEventListener('click',()=>{camera.position.set(6.5,3.1,8.5);controls.target.set(0,.25,0);controls.update();document.querySelectorAll('[data-view]').forEach(b=>b.classList.remove('selected'))});
+const resize=()=>{const r=viewer.getBoundingClientRect();if(!r.width||!r.height)return;renderer.setSize(r.width,r.height,false);camera.aspect=r.width/r.height;camera.updateProjectionMatrix()};new ResizeObserver(resize).observe(viewer);resize();
+renderer.setAnimationLoop(()=>{if(!viewer.isConnected)return;controls.update();renderer.render(scene,camera)});
+} catch(e){console.error('STRIDE 3D viewer error',e);const label=document.createElement('p');label.textContent='3D viewer unavailable on this device. Try an updated browser.';label.style.cssText='position:absolute;top:45%;left:15%;color:#384b4d';viewer.append(label)}
 }
-// Fine mesh weave stripes and reinforced textile paneling, custom design (not copied from reference).
-for(let side of [-1,1]){
- for(let i=0;i<31;i++){const x=-1.65+i*.125;if(x>2.25)break;const idx=Math.max(0,Math.min(xs.length-2,xs.findIndex((v,j)=>j<xs.length-1&&x>=v.x&&x<xs[j+1].x)));const a=xs[idx],b=xs[idx+1],t=(x-a.x)/(b.x-a.x),wid=a.w+(b.w-a.w)*t,ty=topY[idx]+(topY[idx+1]-topY[idx])*t;add([[x,-.08,side*wid*.966],[x+.024,-.08,side*wid*.966],[x+.024,ty-.11,side*wid*.746],[x,ty-.11,side*wid*.746]],i%3===0?'#b9c5b8':'#e0e6da');}
- // heel reinforcement and curved saddle overlay
- add([[-2.40,-.07,side*.48],[-1.55,-.05,side*.91],[-1.60,.32,side*.82],[-2.38,.40,side*.49]],'#b8b4a3','#9d9d90');
- add([[-1.35,.03,side*.98],[-.46,.00,side*1.05],[-.05,.35,side*.84],[-.94,.54,side*.80]],'#e5e2d6','#c8c8b9');
- // lateral stabilizer
- add([[-.82,-.15,side*1.08],[.20,-.15,side*1.06],[.03,.10,side*.98],[-.64,.17,side*.95]],'#a9c5ba');
- // toe protective bumper
- add([[1.77,-.12,side*.76],[2.45,-.12,side*.24],[2.25,.04,side*.42],[1.84,.09,side*.71]],'#e8e1d2','#c4bba9');
-}
-// lace rows and eyelets along the raised tongue
-for(let i=0;i<7;i++){const x=-1.25+i*.265,y=.68-i*.044;for(const side of [-1,1])add([[x-.035,y+.018,side*.34],[x+.035,y+.018,side*.34],[x+.035,y-.018,side*.34],[x-.035,y-.018,side*.34]],'#8d9c95');}
-// sole treads as darker outsole segments
-for(let i=0;i<9;i++){
- let x=-2.3+i*.55;
- add([[x,-.77,-.56],[x+.26,-.77,-.56],[x+.26,-.77,.56],[x,-.77,.56]],'#a97031');
-}
-function render(){
- const w=canvas.clientWidth,h=canvas.clientHeight;if(!w||!h)return;
- const dpr=Math.min(2,window.devicePixelRatio||1);if(canvas.width!==Math.round(w*dpr)||canvas.height!==Math.round(h*dpr)){canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr)}
- ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,w,h);
- const scale=Math.min(w/7.8,h/4.7)*zoom;
- function project(p){let [x,y,z]=p;const X=x*Math.cos(yaw)-z*Math.sin(yaw),Z=x*Math.sin(yaw)+z*Math.cos(yaw),Y=y*Math.cos(pitch)-Z*Math.sin(pitch),D=y*Math.sin(pitch)+Z*Math.cos(pitch);let f=5.5/(5.5-D*.11);return {x:w/2+X*scale*f,y:h*.53-Y*scale*f,d:D};}
- // soft grounding ellipse
- ctx.save();ctx.fillStyle='rgba(0,0,0,.20)';ctx.beginPath();ctx.ellipse(w/2,h*.77,Math.min(w*.30,260)*zoom,18*zoom,0,0,Math.PI*2);ctx.fill();ctx.restore();
- const polygons=parts.map(item=>{const pp=item.poly.map(project);return {...item,pp,depth:pp.reduce((s,p)=>s+p.d,0)/pp.length}}).sort((a,b)=>a.depth-b.depth);
- for(const p of polygons){ctx.beginPath();p.pp.forEach((q,i)=>i?ctx.lineTo(q.x,q.y):ctx.moveTo(q.x,q.y));ctx.closePath();const q0=p.pp[0],q1=p.pp[1],q2=p.pp[2];const cross=(q1.x-q0.x)*(q2.y-q0.y)-(q1.y-q0.y)*(q2.x-q0.x);ctx.fillStyle=p.color;ctx.fill();ctx.fillStyle=cross>0?'rgba(15,33,29,.055)':'rgba(255,255,255,.08)';ctx.fill();if(p.stroke){ctx.lineWidth=.65;ctx.strokeStyle=p.stroke;ctx.stroke();}}
- // overlay minimal labeling
- ctx.fillStyle='#b2dbd2';ctx.font='11px system-ui';ctx.textAlign='center';ctx.fillText('INTERACTIVE CONCEPT / 360°',w/2,h-65);
-}
-canvas.addEventListener('pointerdown',e=>{drag=true;px=e.clientX;py=e.clientY;canvas.setPointerCapture(e.pointerId)});
-canvas.addEventListener('pointermove',e=>{if(!drag)return;yaw+=(e.clientX-px)*.012;pitch=Math.max(-.55,Math.min(.65,pitch+(e.clientY-py)*.007));px=e.clientX;py=e.clientY;render()});
-canvas.addEventListener('pointerup',()=>drag=false);canvas.addEventListener('pointercancel',()=>drag=false);
-canvas.addEventListener('wheel',e=>{e.preventDefault();zoom=Math.max(.7,Math.min(1.6,zoom-e.deltaY*.001));render()},{passive:false});
-document.getElementById('resetView').addEventListener('click',()=>{yaw=-.63;pitch=.23;zoom=1;render()});
-window.addEventListener('resize',render);
-const obs=new MutationObserver(()=>{if(document.getElementById('sneaker').classList.contains('active'))render()});obs.observe(document.getElementById('sneaker'),{attributes:true,attributeFilter:['class']});
-render();
-})();
+
 </script></body></html>
