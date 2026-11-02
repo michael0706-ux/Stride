@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="#101820" name="theme-color"/><title>STRIDE — Smart Gait Studio</title><style>
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1" name="viewport"/><meta content="#101820" name="theme-color"/><title>STRIDE — Smart Gait Studio v12</title><style>
 :root{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#19242c;background:#f4f5f2}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button{cursor:pointer}header{background:#101820;color:white;padding:20px clamp(18px,5vw,70px);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}.brand{font-size:28px;letter-spacing:.13em;font-weight:900}.tag{font-size:11px;color:#b5c7c6;letter-spacing:.16em}nav{display:flex;flex-wrap:wrap;gap:5px}nav button{background:transparent;color:#c4cecf;border:0;border-radius:9px;padding:11px 13px}nav button.active,nav button:hover{background:#31434a;color:white}main{max-width:1190px;margin:auto;padding:30px 20px 70px}.page{display:none}.page.active{display:block}.hero{background:#17272e;color:#fff;border-radius:24px;padding:clamp(25px,5vw,62px);position:relative;overflow:hidden}.hero:after{content:'S';position:absolute;right:5%;top:-70px;font-size:400px;font-weight:900;opacity:.045;pointer-events:none}.eyebrow{letter-spacing:.18em;text-transform:uppercase;font-size:12px;font-weight:800;color:#69cdb5}.hero h1{font-size:clamp(38px,6vw,75px);line-height:1.05;margin:16px 0;max-width:800px}.hero p{max-width:620px;color:#c5d3d5;line-height:1.75}.btn{border:0;background:#17272e;color:white;border-radius:11px;padding:12px 18px;font-weight:700}.btn.primary{background:#55c7ab;color:#102420}.btn.secondary{background:#e5eeeb;color:#17382f}.btn:disabled{opacity:.45;cursor:not-allowed}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}.card{background:white;border:1px solid #e0e5e1;border-radius:18px;padding:22px;min-width:0}.card h3{margin:0 0 10px}.card p,.muted{color:#64737a;line-height:1.65}.section-title{font-size:32px;margin:0 0 9px}.section-head{margin:12px 0 23px}.stat{font-size:37px;font-weight:850;letter-spacing:-.04em}.unit{font-size:14px;color:#66767c;font-weight:500}.small{font-size:12px;color:#738188}.pill{display:inline-block;border-radius:100px;background:#e8f5f0;color:#20745f;padding:6px 10px;font-size:12px;font-weight:800}.warning{background:#fff3d9;color:#815600}.canvas-wrap{height:210px;width:100%;position:relative}canvas{width:100%;height:100%}.progress{height:10px;background:#e5ebe7;border-radius:20px;overflow:hidden;margin:13px 0}.progress div{height:100%;background:#4cc5a3;width:0%;transition:width .3s}.list{display:flex;flex-direction:column;gap:10px}.list-item{border:1px solid #e5eae6;padding:13px;border-radius:10px;display:flex;justify-content:space-between;gap:12px;align-items:center}.shoe{background:linear-gradient(130deg,#14242d,#2d4851);color:white;border-radius:20px;padding:35px;text-align:center;min-height:250px;display:flex;flex-direction:column;justify-content:center}.shoe svg{max-width:430px;width:100%;height:auto;margin:auto}.field{display:flex;flex-direction:column;gap:7px;margin:13px 0}.field input,.field select{padding:12px;border:1px solid #d3dcd6;border-radius:10px;background:#fff}.notice{background:#fff7e8;border:1px solid #f1ddb6;border-radius:13px;padding:14px;color:#715724;line-height:1.55}.footprint{display:flex;gap:15px;justify-content:center;margin:15px 0}.foot{height:155px;width:85px;border-radius:48% 48% 36% 36%;background:radial-gradient(ellipse at 50% 25%,#edb67c,transparent 45%),radial-gradient(ellipse at 45% 75%,#78c6b6,transparent 50%),#dbe5e3;transform:rotate(-9deg)}.foot:last-child{transform:rotate(9deg)}.foot-label{text-align:center;font-size:12px;color:#68757b}footer{text-align:center;color:#6a787d;padding:25px;font-size:12px}@media(max-width:760px){header{padding:17px}nav{width:100%;overflow-x:auto;flex-wrap:nowrap}nav button{white-space:nowrap}.grid,.grid.two{grid-template-columns:1fr}.stat{font-size:30px}main{padding:20px 12px 50px}.hero{border-radius:16px}}
 
 /* STRIDE v5: dashboard-first interface */
@@ -115,7 +115,7 @@ renderHistory();renderAnalysis();
  const img=new Image();img.src='data:image/svg+xml;charset=utf-8,'+encodeURIComponent(source);
  const instances=[];
  function mount(id){const target=document.getElementById(id);if(!target)return;const canvas=document.createElement('canvas');canvas.className='stride-fallback-canvas';canvas.style.cssText='position:absolute;inset:0;width:100%;height:100%;touch-action:pan-y;cursor:grab;z-index:2';target.parentElement.style.position='relative';target.parentElement.appendChild(canvas);const state={canvas,target,yaw:0,down:false,startX:0,startYaw:0};instances.push(state);
- const paint=()=>{if(target.dataset.threeReady==='yes'){canvas.style.display='none';return;}canvas.style.display='block';const rect=canvas.getBoundingClientRect();if(rect.width<2||rect.height<2||!img.complete)return;
+ const paint=()=>{if(target.dataset.threeReady==='yes' && target.dataset.frameOk==='yes'){canvas.style.display='none';return;}canvas.style.display='block';const rect=canvas.getBoundingClientRect();if(rect.width<2||rect.height<2||!img.complete)return;
  const dpr=Math.min(devicePixelRatio||1,2),w=rect.width,h=rect.height;canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);const c=canvas.getContext('2d');if(!c)return;c.setTransform(dpr,0,0,dpr,0,0);c.clearRect(0,0,w,h);
  const ratio=Math.min(w/900,h/440)*.95,iw=900*ratio,ih=440*ratio;
  c.translate(w/2,h/2);c.transform(Math.cos(state.yaw)*.18+ .82,0,Math.sin(state.yaw)*.11,1,0,0);c.drawImage(img,-iw/2,-ih/2,iw,ih);
@@ -126,7 +126,7 @@ renderHistory();renderAnalysis();
  new ResizeObserver(paint).observe(canvas);setTimeout(paint,200);return state;
  }
  img.onload=()=>instances.forEach(s=>s.paint());mount('homeShoe3d');mount('shoe3d');
- window.__strideFallback={paintAll:()=>instances.forEach(s=>s.paint())};setInterval(()=>instances.forEach(s=>{if(s.target.dataset.threeReady==='yes'&&s.canvas.style.display!=='none')s.paint()}),500);
+ window.__strideFallback={paintAll:()=>instances.forEach(s=>s.paint())};setInterval(()=>instances.forEach(s=>{if(s.canvas.style.display!=='none'||s.target.dataset.frameOk!=='yes')s.paint()}),500);
  window.addEventListener('error',e=>{if(String(e.message||'').includes('module')||String(e.message||'').includes('Three'))console.warn('3D library unavailable; using sneaker illustration fallback.')});
 })();
 </script>
@@ -135,9 +135,9 @@ import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 const canvas=document.getElementById('shoe3d');const viewer=canvas?.closest('.viewer');
 if(canvas&&viewer){try{
-const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;renderer.shadowMap.enabled=true;renderer.shadowMap.type=THREE.PCFSoftShadowMap;
-canvas.dataset.threeReady='yes';const scene=new THREE.Scene();const camera=new THREE.PerspectiveCamera(33,1,.1,100);camera.position.set(0.15,2.1,9.4);const controls=new OrbitControls(camera,canvas);controls.enableDamping=true;controls.enablePan=false;controls.minDistance=7.3;controls.maxDistance=11.8;controls.target.set(0,.40,0);controls.minAzimuthAngle=-.48;controls.maxAzimuthAngle=.48;controls.minPolarAngle=1.12;controls.maxPolarAngle=1.65;
-scene.add(new THREE.HemisphereLight(0xffffff,0x9d9e95,2.1));const key=new THREE.DirectionalLight(0xffffff,3.2);key.position.set(-3,9,6);key.castShadow=true;key.shadow.mapSize.set(1024,1024);key.shadow.camera.left=-7;key.shadow.camera.right=7;key.shadow.camera.top=7;key.shadow.camera.bottom=-7;scene.add(key);const fill=new THREE.DirectionalLight(0xfff5e7,1.6);fill.position.set(5,3,-5);scene.add(fill);
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true});renderer.setPixelRatio(Math.min(devicePixelRatio||1,1.25));renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.05;renderer.shadowMap.enabled=false;
+canvas.dataset.threeReady='yes';canvas.dataset.frameOk='no';const scene=new THREE.Scene();const camera=new THREE.PerspectiveCamera(33,1,.1,100);camera.position.set(0.15,2.1,9.4);const controls=new OrbitControls(camera,canvas);controls.enableDamping=true;controls.enablePan=false;controls.minDistance=7.3;controls.maxDistance=11.8;controls.target.set(0,.40,0);controls.minAzimuthAngle=-.48;controls.maxAzimuthAngle=.48;controls.minPolarAngle=1.12;controls.maxPolarAngle=1.65;
+scene.add(new THREE.HemisphereLight(0xffffff,0x9d9e95,2.1));const key=new THREE.DirectionalLight(0xffffff,3.2);key.position.set(-3,9,6);key.castShadow=false;key.shadow.mapSize.set(512,512);key.shadow.camera.left=-7;key.shadow.camera.right=7;key.shadow.camera.top=7;key.shadow.camera.bottom=-7;scene.add(key);const fill=new THREE.DirectionalLight(0xfff5e7,1.6);fill.position.set(5,3,-5);scene.add(fill);
 const shoe=new THREE.Group();scene.add(shoe);
 const material=(color,roughness=.84)=>new THREE.MeshStandardMaterial({color,roughness,side:THREE.DoubleSide});
 const cream=material('#f2efe7'),overlay=material('#f9f6ef'),seam=material('#c9c2b5'),sole=material('#f5f2ec'),soleShadow=material('#d9d6ce'),gum=material('#b87a3e'),gumTread=material('#995e2c'),lining=material('#9eaea4'),laceMat=material('#fffdf6'),eyeMat=material('#aaa69d',.42),windowMat=material('#c1b8a9');
@@ -211,11 +211,11 @@ const resize=()=>{const r=viewer.getBoundingClientRect();if(!r.width||!r.height)
 // Home and Sneaker share exactly the same 3D geometry/materials.
 // Home uses its own WebGL canvas and camera so both previews are interactive.
 const homeCanvas=document.getElementById('homeShoe3d');
-let homeRenderer=null,homeControls=null,homeCamera=null,homeObserver=null;
+let homeRenderer=null,homeControls=null,homeCamera=null,homeObserver=null,homeUserInteracted=false;
 if(homeCanvas){
   try{
-    homeRenderer=new THREE.WebGLRenderer({canvas:homeCanvas,antialias:true,alpha:true,powerPreference:'low-power'});homeCanvas.dataset.threeReady='yes';
-    homeRenderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.75));
+    homeRenderer=new THREE.WebGLRenderer({canvas:homeCanvas,antialias:true,alpha:true,powerPreference:'low-power'});homeCanvas.dataset.threeReady='yes';homeCanvas.dataset.frameOk='no';
+    homeRenderer.setPixelRatio(Math.min(window.devicePixelRatio||1,1.1));
     homeRenderer.outputColorSpace=THREE.SRGBColorSpace;
     homeRenderer.toneMapping=THREE.ACESFilmicToneMapping;
     homeRenderer.toneMappingExposure=1.20;
@@ -231,7 +231,7 @@ if(homeCanvas){
     homeControls.minAzimuthAngle=-.38;homeControls.maxAzimuthAngle=.38;homeControls.minPolarAngle=1.16;
     homeControls.maxPolarAngle=1.62;
     homeControls.update();
-    let homeUserInteracted=false;const stopAuto=()=>{homeUserInteracted=true};
+    const stopAuto=()=>{homeUserInteracted=true};
     homeCanvas.addEventListener('pointerdown',stopAuto);
     homeCanvas.addEventListener('wheel',stopAuto,{passive:true});
     const resizeHome=()=>{
@@ -246,18 +246,27 @@ if(homeCanvas){
     resizeHome();
   }catch(homeError){
     console.error('Home 3D preview error:',homeError);
-    homeCanvas.replaceWith(Object.assign(document.createElement('p'),{textContent:'3D preview unavailable on this device.'}));
+    homeCanvas.dataset.threeReady='no';homeCanvas.dataset.frameOk='no';window.__strideFallback?.paintAll();
     homeRenderer=null;
   }
 }
+// Recover gracefully from GPU context loss instead of leaving invisible canvases.
+function markLost(target){target.dataset.threeReady='no';target.dataset.frameOk='no';window.__strideFallback?.paintAll();}
+canvas.addEventListener('webglcontextlost',e=>{e.preventDefault();markLost(canvas);});
+homeCanvas?.addEventListener('webglcontextlost',e=>{e.preventDefault();markLost(homeCanvas);homeRenderer=null;});
+let lastFrame=0,viewerFailed=false,homeFailed=false;
 renderer.setAnimationLoop(()=>{
-  controls.update();
-  // Only render the visible page to reduce mobile GPU use.
-  if(document.getElementById('sneaker')?.classList.contains('active'))renderer.render(scene,camera);
-  if(homeRenderer&&document.getElementById('home')?.classList.contains('active')){
-    if(!homeUserInteracted){const t=performance.now()*.00045;homeCamera.position.x=Math.sin(t)*2.3;homeCamera.position.y=1.85+Math.sin(t*.7)*.12;homeCamera.lookAt(0,.30,0)}else{homeControls.update()}
-    homeRenderer.render(scene,homeCamera);
+  const now=performance.now();if(now-lastFrame<32)return;lastFrame=now; // 30 fps to reduce GPU pressure
+  if(document.getElementById('sneaker')?.classList.contains('active')&&!viewerFailed){
+    try{controls.update();renderer.render(scene,camera);canvas.dataset.frameOk='yes';window.__strideFallback?.paintAll();}
+    catch(err){console.error('Sneaker render failed:',err);viewerFailed=true;markLost(canvas)}
+  }
+  if(homeRenderer&&document.getElementById('home')?.classList.contains('active')&&!homeFailed){
+    try{
+      if(!homeUserInteracted){const t=now*.00045;homeCamera.position.x=Math.sin(t)*2.3;homeCamera.position.y=1.85+Math.sin(t*.7)*.12;homeCamera.lookAt(0,.30,0)}else{homeControls.update()}
+      homeRenderer.render(scene,homeCamera);homeCanvas.dataset.frameOk='yes';window.__strideFallback?.paintAll();
+    }catch(err){console.error('Home preview render failed:',err);homeFailed=true;markLost(homeCanvas)}
   }
 });
-}catch(e){console.error('STRIDE 3D error',e);canvas.dataset.threeReady='no';window.__strideFallback?.paintAll();const label=document.createElement('p');label.textContent='3D viewer unavailable. Please use an updated browser.';label.style.cssText='position:absolute;top:45%;left:20%;color:#344';viewer.append(label)}}
+}catch(e){console.error('STRIDE 3D error',e);canvas.dataset.threeReady='no';window.__strideFallback?.paintAll();const label=document.createElement('p');label.textContent='3D viewer unavailable. Please use an updated browser.';label.style.cssText='position:absolute;top:45%;left:20%;color:#344';/* fallback illustration remains visible */}}
 </script></body></html>
