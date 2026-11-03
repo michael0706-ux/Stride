@@ -129,7 +129,7 @@ main{max-width:1320px;padding:42px 36px 90px}footer{border-top:1px solid var(--l
 </main><footer>STRIDE · Technology × Fashion · Research Prototype · 2026</footer><script>
 'use strict';
 const $=id=>document.getElementById(id);const KEY='stride_sessions_v1',SETTINGS='stride_settings_v1';let sessions=[],settings={language:'en-US',voiceEnabled:'yes',goal:2000,voiceVolume:0.8,voiceRate:1,coachFrequency:'normal',textScale:'normal',reduceMotion:'no'};try{sessions=JSON.parse(localStorage.getItem(KEY)||'[]');if(!Array.isArray(sessions))sessions=[];settings={...settings,...JSON.parse(localStorage.getItem(SETTINGS)||'{}')}}catch(e){sessions=[]}
-let coachingEvents=[];let running=false,started=0,steps=0,lastStep=0,stepTimes=[],motion=[],timer=null,lastCoach=0,goalSpoken=false,lastMotion=0,receivedSensor=false,gravity=0,hasGravity=false;
+let coachingEvents=[];let starting=false;let running=false,started=0;steps=0,lastStep=0,stepTimes=[],motion=[],timer=null,lastCoach=0,goalSpoken=false,lastMotion=0,receivedSensor=false,gravity=0,hasGravity=false;
 function showPage(name){document.querySelectorAll('.page').forEach(e=>e.classList.toggle('active',e.id===name));document.querySelectorAll('nav button').forEach(e=>e.classList.toggle('active',e.dataset.page===name));if(name==='analysis')renderAnalysis();if(name==='history')renderHistory();if(name==='live')drawLive();window.scrollTo(0,0)}window.showPage=showPage;document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));
 function saveLocal(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}}
 function speak(en,ko){if(settings.voiceEnabled!=='yes'||!('speechSynthesis'in window))return;const u=new SpeechSynthesisUtterance(settings.language==='ko-KR'?ko:en);u.lang=settings.language;u.rate=1;window.speechSynthesis.cancel();window.speechSynthesis.speak(u)}
@@ -149,9 +149,27 @@ function update(){if(!running)return;const elapsed=Math.floor((Date.now()-starte
 function coach(en,ko){lastCoach=Date.now();coachingEvents.push({seconds:Math.floor((Date.now()-started)/1000),message:en});renderCoachEvents();$('coachText').textContent=settings.language==='ko-KR'?ko:en;speak(en,ko)}
 function renderCoachEvents(){const root=document.getElementById("coachEventLog");if(!root)return;root.replaceChildren();if(!coachingEvents.length){root.textContent="No coaching events yet.";return;}for(const item of coachingEvents){const div=document.createElement("div");div.textContent=formatTime(Math.max(0,item.seconds))+" · "+item.message;root.appendChild(div);}}
 function formatTime(s){return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')}
-async function start(){if(running)return;if(!('DeviceMotionEvent'in window)){status('Device motion is not supported in this browser. Use a compatible phone.');return}try{if(typeof DeviceMotionEvent.requestPermission==='function'){const p=await DeviceMotionEvent.requestPermission();if(p!=='granted'){status('Motion permission denied. Enable access in browser settings.');return}}}catch(e){status('Motion permission error: '+e.message);return}running=true;started=Date.now();coachingEvents=[];renderCoachEvents();steps=0;lastStep=0;stepTimes=[];motion=[];lastCoach=0;goalSpoken=false;receivedSensor=false;lastMotion=0;hasGravity=false;$('startBtn').disabled=true;$('stopBtn').disabled=false;$('coachText').textContent='Session started. Walk with your phone secured.';window.addEventListener('devicemotion',motionBridge);timer=setInterval(update,250);update();
-  // Start cue is played only after motion permission is granted and the session is active.
-  speak('Measurement started. Begin walking.','측정을 시작합니다. 걸어 주세요.');
+function announceMeasurementStart(){
+  // Speak directly within the button gesture, before any asynchronous permission prompt.
+  // Session announcements are independent of optional coaching prompts.
+  if(!('speechSynthesis' in window))return;
+  const synth=window.speechSynthesis;
+  const lang=settings.language==='ko-KR'?'ko-KR':'en-US';
+  const phrase=lang==='ko-KR'?'측정을 시작했습니다. 걸어 주세요.':'Measurement started. Begin walking.';
+  const utterance=new SpeechSynthesisUtterance(phrase);
+  utterance.lang=lang;
+  utterance.volume=Math.max(0,Math.min(1,Number(settings.voiceVolume??0.8)));
+  utterance.rate=Math.max(0.7,Math.min(1.5,Number(settings.voiceRate??1)));
+  const voices=synth.getVoices();
+  const voice=voices.find(v=>v.lang.toLowerCase().startsWith(lang.slice(0,2).toLowerCase())&&v.localService)||voices.find(v=>v.lang.toLowerCase().startsWith(lang.slice(0,2).toLowerCase()));
+  if(voice)utterance.voice=voice;
+  synth.cancel();
+  synth.speak(utterance);
+}
+async function start(){if(running||starting)return;starting=true;
+  announceMeasurementStart();
+  if(!('DeviceMotionEvent'in window)){starting=false;status('Device motion is not supported in this browser. Use a compatible phone.');return}try{if(typeof DeviceMotionEvent.requestPermission==='function'){const p=await DeviceMotionEvent.requestPermission();if(p!=='granted'){starting=false;status('Motion permission denied. Enable access in browser settings.');return}}}catch(e){starting=false;status('Motion permission error: '+e.message);return}starting=false;running=true;started=Date.now();coachingEvents=[];renderCoachEvents();steps=0;lastStep=0;stepTimes=[];motion=[];lastCoach=0;goalSpoken=false;receivedSensor=false;lastMotion=0;hasGravity=false;$('startBtn').disabled=true;$('stopBtn').disabled=false;$('coachText').textContent='Session started. Walk with your phone secured.';window.addEventListener('devicemotion',motionBridge);timer=setInterval(update,250);update();
+  // Start announcement already played at the user's click, without waiting for permission.
   window.dispatchEvent(new CustomEvent('stride:session-start'));
 }
 function stop(){if(!running)return;running=false;window.removeEventListener('devicemotion',motionBridge);clearInterval(timer);$('startBtn').disabled=false;$('stopBtn').disabled=true;const duration=Math.floor((Date.now()-started)/1000);if(receivedSensor){const record={date:new Date().toISOString(),steps,duration,cadence:cadence(),variability:variability(),coachingEvents:[...coachingEvents]};sessions.unshift(record);saveLocal(KEY,sessions);status('Session saved locally. Estimates are not clinically validated.')}else status('No sensor readings were received. Session was not saved.');$('coachText').textContent='Session ended. View your saved results in History.';renderHistory()}
