@@ -84,7 +84,7 @@ main{max-width:1320px;padding:42px 36px 90px}footer{border-top:1px solid var(--l
 <section class="page" id="analysis"><div class="section-head"><div class="eyebrow"><span data-i18n="Data &amp; insights">Data &amp; insights</span></div><h2 class="section-title"><span data-i18n="Gait Analysis">Gait Analysis</span></h2><p class="muted"><span data-i18n="Your walking trends, at a glance. Experimental estimates only.">Your walking trends, at a glance. Experimental estimates only.</span></p></div><div class="grid"><div class="card"><div class="small"><span data-i18n="LATEST STEPS">LATEST STEPS</span></div><div class="stat" id="aSteps">—</div></div><div class="card"><div class="small"><span data-i18n="LATEST CADENCE">LATEST CADENCE</span></div><div class="stat" id="aCadence">—</div></div><div class="card"><div class="small"><span data-i18n="RHYTHM VARIABILITY">RHYTHM VARIABILITY</span></div><div class="stat" id="aRhythm">—</div><p class="small"><span data-i18n="Coefficient of variation of detected step intervals (lower is more regular).">Coefficient of variation of detected step intervals (lower is more regular).</span></p></div></div><div class="card posture-insight"><h3 data-i18n="Phone orientation &amp; movement stability">Phone orientation &amp; movement stability</h3><div class="grid two"><div><span class="small" data-i18n="LATEST PHONE TILT">LATEST PHONE TILT</span><div class="stat" id="aPosture">—</div></div><div><span class="small" data-i18n="MOVEMENT VARIATION">MOVEMENT VARIATION</span><div class="stat" id="aSway">—</div></div></div><p class="small" data-i18n="Phone orientation is not a measurement of spinal alignment or full-body walking posture.">Phone orientation is not a measurement of spinal alignment or full-body walking posture.</p></div><div class="grid two" style="margin-top:16px"><div class="card"><h3><span data-i18n="Steps per session">Steps per session</span></h3><div class="canvas-wrap"><canvas id="stepsChart"></canvas></div><p class="small"><span data-i18n="Based only on saved sessions.">Based only on saved sessions.</span></p></div></div></section>
 <section class="page" id="history"><div class="section-head"><div class="eyebrow"><span data-i18n="Your movement journal">Your movement journal</span></div><h2 class="section-title"><span data-i18n="Walking History">Walking History</span></h2><p class="muted"><span data-i18n="Your walks, saved on this device.">Your walks, saved on this device.</span></p></div><div class="grid"><div class="card"><div class="small"><span data-i18n="TOTAL WALKS">TOTAL WALKS</span></div><div class="stat" id="totalWalks">0</div></div><div class="card"><div class="small"><span data-i18n="TOTAL ESTIMATED STEPS">TOTAL ESTIMATED STEPS</span></div><div class="stat" id="totalSteps">0</div></div><div class="card"><div class="small"><span data-i18n="TOTAL DURATION">TOTAL DURATION</span></div><div class="stat" id="totalDuration">0 min</div></div></div><div class="card" style="margin-top:16px"><div class="actions"><button class="btn secondary" id="csvBtn"><span data-i18n="Export CSV">Export CSV</span></button><button class="btn" id="clearBtn"><span data-i18n="Clear history">Clear history</span></button></div><div class="list" id="sessionList"><p class="muted"><span data-i18n="No sessions yet.">No sessions yet.</span></p></div></div></section>
 <section class="page" id="sneaker"><div class="section-head"><div class="eyebrow" data-i18n="Future product vision">Future product vision</div><h2 class="section-title" data-i18n="The Smart Sneaker">The Smart Sneaker</h2><p class="muted" data-i18n="Drag to rotate the 3D concept shoe. Future hardware concept only.">Drag to rotate the 3D concept shoe. Future hardware concept only.</p></div>
-<div class="viewer"><canvas aria-label="Rotatable 3D Cloudmuse-inspired original sneaker concept" id="shoe3d"></canvas><div class="sensor-tools"><button id="productMode" class="sensor-toggle" type="button" aria-pressed="true">PRODUCT VIEW</button><button id="sensorMode" class="sensor-toggle" type="button" aria-pressed="false">SENSOR TECHNOLOGY</button></div><div id="sensorLegend" class="sensor-legend" hidden><strong>INTEGRATED INSOLE / SENSOR ZONES</strong><div class="sensor-scale"></div><small>Three conceptual sensing zones · No live shoe data</small></div><div aria-label="Sneaker views" class="view-presets"><button data-view="side" type="button">SIDE</button><button data-view="top" type="button">TOP</button><button data-view="rear" type="button">HEEL</button><button data-view="sole" type="button">SOLE</button></div><div class="viewer-top"><span class="viewer-tag">STRIDE / CLOUDMUSE · 02</span><span class="viewer-tag" data-i18n="CONCEPT MODEL">CONCEPT MODEL</span></div><div class="viewer-bottom"><span data-i18n="Drag to rotate 360° · Scroll to zoom">Drag to rotate 360° · Scroll to zoom</span><button class="btn secondary" data-i18n="Reset view" id="resetView">Reset view</button></div></div>
+<div class="viewer"><canvas aria-label="Rotatable 3D Cloudmuse-inspired original sneaker concept" id="shoe3d"></canvas><div class="sensor-tools"><button id="productMode" class="sensor-toggle" type="button" aria-pressed="true">PRODUCT VIEW</button><button id="sensorMode" class="sensor-toggle" type="button" aria-pressed="false">SENSOR TECHNOLOGY</button></div><div id="sensorLegend" class="sensor-legend" hidden><strong>PRESSURE SENSOR ZONES / CONCEPT</strong><div class="sensor-scale"></div><small>HEEL · MIDFOOT · FOREFOOT — Concept simulation, not live sensor data</small></div><div aria-label="Sneaker views" class="view-presets"><button data-view="side" type="button">SIDE</button><button data-view="top" type="button">TOP</button><button data-view="rear" type="button">HEEL</button><button data-view="sole" type="button">SOLE</button></div><div class="viewer-top"><span class="viewer-tag">STRIDE / CLOUDMUSE · 02</span><span class="viewer-tag" data-i18n="CONCEPT MODEL">CONCEPT MODEL</span></div><div class="viewer-bottom"><span data-i18n="Drag to rotate 360° · Scroll to zoom">Drag to rotate 360° · Scroll to zoom</span><button class="btn secondary" data-i18n="Reset view" id="resetView">Reset view</button></div></div>
 <div class="sensor-note"><strong>PRESSURE SENSOR STUDY / 01</strong><span>Select SENSOR TECHNOLOGY to explore the conceptual heel, midfoot and forefoot sensor positions. Illustrative only — not connected to live footwear hardware.</span></div><div class="shoe-points"><div><b>01</b><span data-i18n="Mesh upper">Mesh upper</span></div><div><b>02</b><span data-i18n="Lace-up support">Lace-up support</span></div><div><b>03</b><span data-i18n="Cushioned sole">Cushioned sole</span></div><div><b>04</b><span data-i18n="Sensor-ready concept">Sensor-ready concept</span></div></div>
 <p class="small" data-i18n="3D visualization is conceptual. No shoe hardware or pressure sensors are connected." style="margin-top:14px">3D visualization is conceptual. No shoe hardware or pressure sensors are connected.</p></section>
 <section class="page" id="settings"><div class="section-head"><div class="eyebrow"><span data-i18n="Personalize your session">Personalize your session</span></div><h2 class="section-title"><span data-i18n="Settings">Settings</span></h2></div><div class="card" style="max-width:650px"><label class="field"><span data-i18n="Voice language">Voice language</span><select id="language"><option data-i18n="English" value="en-US">English</option><option data-i18n="한국어" value="ko-KR">한국어</option></select></label><label class="field"><span data-i18n="Voice coaching">Voice coaching</span><select id="voiceEnabled"><option data-i18n="Enabled" value="yes">Enabled</option><option data-i18n="Disabled" value="no">Disabled</option></select></label><label class="field"><span data-i18n="Session step goal">Session step goal</span><input id="goalInput" max="100000" min="100" step="100" type="number" value="2000"/></label><button class="btn primary" id="saveSettings"><span data-i18n="Save settings">Save settings</span></button><p class="small" id="settingsMsg"></p></div><div class="notice" style="margin-top:18px"><span data-i18n="STRIDE is an experimental wellness research prototype. It does not diagnose, treat, prevent, or correct medical or orthopedic conditions. Walking metrics are estimates derived from phone movement.">STRIDE is an experimental wellness research prototype. It does not diagnose, treat, prevent, or correct medical or orthopedic conditions. Walking metrics are estimates derived from phone movement.</span></div></section>
@@ -206,7 +206,7 @@ function setSensorMode(enabled){
  productButton?.setAttribute('aria-pressed',String(!sensorMode));
  homeSensorButton?.setAttribute('aria-pressed','false');
  if(homeSensorButton)homeSensorButton.textContent='VIEW SENSOR TECHNOLOGY ↗';
- if(homeSensorCaption)homeSensorCaption.textContent='PRODUCT STUDY / ENGINEERED UPPER · SCULPTED SOLE';
+ if(homeSensorCaption)homeSensorCaption.textContent='PRODUCT STUDY / 360° FOOTWEAR DESIGN';
  if(sensorLegend)sensorLegend.hidden=!sensorMode;
  for(const v of sessions)applySensorMode(v);
 }
@@ -215,35 +215,51 @@ productButton?.addEventListener('click',()=>setSensorMode(false));
 homeSensorButton?.addEventListener('click',()=>{setSensorMode(true);showPage('sneaker')});
 function addSensorConcept(v){
  const group=new THREE.Group();group.name='ConceptPressureSensorArray';
- // Discrete, inset sensing elements rather than decorative floating rings.
- const zones=[{x:-1.65,color:0xdba46b,label:'HEEL',count:3},{x:-.25,color:0x75b8ae,label:'MIDFOOT',count:2},{x:1.38,color:0xd77d62,label:'FOREFOOT',count:4}];
- const padMat=(color)=>new THREE.MeshStandardMaterial({color,emissive:color,emissiveIntensity:.25,roughness:.65,metalness:.04,transparent:true,opacity:.93,side:THREE.DoubleSide});
+ // Zones are illustrative: no physical insole or live hardware is connected.
+ const zones=[
+  {x:-1.58,label:'01  HEEL',detail:'Impact / landing',color:0xf0b44b,ys:.98},
+  {x:-.22,label:'02  MIDFOOT',detail:'Balance / transition',color:0x31b8ad,ys:1.04},
+  {x:1.40,label:'03  FOREFOOT',detail:'Push-off / pressure',color:0xf07854,ys:1.0}
+ ];
+ const padMaterial=color=>new THREE.MeshBasicMaterial({color,transparent:true,opacity:.95,depthTest:false,depthWrite:false,side:THREE.DoubleSide});
+ function textSprite(label,color){
+  const c=document.createElement('canvas');c.width=640;c.height=154;const ctx=c.getContext('2d');
+  ctx.fillStyle='rgba(25,48,43,.94)';ctx.beginPath();ctx.roundRect(8,8,624,138,15);ctx.fill();
+  ctx.fillStyle='#'+color.toString(16).padStart(6,'0');ctx.fillRect(12,12,8,130);
+  ctx.fillStyle='#ffffff';ctx.font='bold 47px Arial, sans-serif';ctx.fillText(label,38,95);
+  const texture=new THREE.CanvasTexture(c);texture.colorSpace=THREE.SRGBColorSpace;
+  const sprite=new THREE.Sprite(new THREE.SpriteMaterial({map:texture,transparent:true,depthTest:false,depthWrite:false}));
+  sprite.scale.set(1.10,.265,1);sprite.renderOrder=1005;return sprite;
+ }
  for(const zone of zones){
-   for(let i=0;i<zone.count;i++){
-    const z=(i-(zone.count-1)/2)*.29;
-    const pad=new THREE.Mesh(new THREE.CylinderGeometry(.115,.115,.012,28),padMat(zone.color));
-    pad.position.set(zone.x+(i%2)*.18,.42,z);group.add(pad);
-   }
-   const stem=new THREE.Mesh(new THREE.CylinderGeometry(.008,.008,.21,8),new THREE.MeshBasicMaterial({color:zone.color,transparent:true,opacity:.85}));
-   stem.position.set(zone.x,.66,.65);group.add(stem);
-   const dot=new THREE.Mesh(new THREE.SphereGeometry(.042,12,10),new THREE.MeshBasicMaterial({color:zone.color}));
-   dot.position.set(zone.x,.77,.65);group.add(dot);
+  // Compact luminous pressure-pad cluster, placed visibly above the translucent cutaway.
+  for(let i=0;i<5;i++){
+   const angle=i*Math.PI*2/5;
+   const px=zone.x+Math.cos(angle)*.19;
+   const pz=.49+Math.sin(angle)*.17;
+   const halo=new THREE.Mesh(new THREE.SphereGeometry(.105,20,12),new THREE.MeshBasicMaterial({color:zone.color,transparent:true,opacity:.14,depthTest:false,depthWrite:false}));
+   halo.position.set(px,.52,pz);halo.scale.set(1.35,.19,1.0);halo.renderOrder=1001;group.add(halo);
+   const pad=new THREE.Mesh(new THREE.SphereGeometry(.073,20,12),padMaterial(zone.color));
+   pad.position.set(px,.545,pz);pad.scale.set(1.2,.18,.78);pad.renderOrder=1002;group.add(pad);
+  }
+  const linePoints=[new THREE.Vector3(zone.x,.56,.57),new THREE.Vector3(zone.x,.92,.79),new THREE.Vector3(zone.x,zone.ys+0.24,.79)];
+  const line=new THREE.Line(new THREE.BufferGeometry().setFromPoints(linePoints),new THREE.LineBasicMaterial({color:zone.color,transparent:true,opacity:1,depthTest:false,depthWrite:false}));line.renderOrder=1003;group.add(line);
+  const ring=new THREE.Mesh(new THREE.RingGeometry(.083,.103,36),padMaterial(zone.color));ring.position.set(zone.x,.56,.58);ring.rotation.x=-Math.PI/2;ring.renderOrder=1004;group.add(ring);
+  const label=textSprite(zone.label,zone.color);label.position.set(zone.x,zone.ys+.34,.79);group.add(label);
  }
  group.visible=false;v.modelGroup.add(group);v.sensorGroup=group;
 }
 function applySensorMode(v){
  if(!v.sensorGroup)return;
- // Home always showcases the finished product; technical cutaway only in Sneaker view.
  const cutaway=sensorMode&&!v.isHome;
  v.sensorGroup.visible=cutaway;
  v.modelGroup.traverse(obj=>{
   if(!obj.isMesh||v.sensorGroup.getObjectById(obj.id))return;
   if(!obj.userData.originalMaterial)obj.userData.originalMaterial=obj.material;
   const name=obj.name||'';
-  // Only main upper shell is translucent; laces, seams, sole and heel remain fully defined.
   const shell=/engineered_mesh_upper|quarter_mesh/i.test(name);
   if(cutaway&&shell){
-   if(!obj.userData.sensorMaterial){const mat=obj.material.clone();mat.transparent=true;mat.opacity=.43;mat.depthWrite=false;mat.side=THREE.DoubleSide;obj.userData.sensorMaterial=mat}
+   if(!obj.userData.sensorMaterial){const mat=obj.material.clone();mat.transparent=true;mat.opacity=.24;mat.depthWrite=false;mat.side=THREE.DoubleSide;obj.userData.sensorMaterial=mat}
    obj.material=obj.userData.sensorMaterial;
   }else obj.material=obj.userData.originalMaterial;
  });
